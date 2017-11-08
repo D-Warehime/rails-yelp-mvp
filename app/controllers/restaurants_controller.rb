@@ -12,6 +12,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.save
+    redirect_to restaurants_path
   end
 
   def show
@@ -22,10 +23,12 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant.update(restaurant_params)
+    redirect_to restaurants_path
   end
 
   def destroy
     @restaurant.destroy
+    redirect_to restaurants_path
   end
 
   private

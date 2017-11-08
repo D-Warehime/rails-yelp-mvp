@@ -5,32 +5,32 @@ restaurants = [
   {
     name: Faker::Company.name,
     address: Faker::Address.street_address + ", " + Faker::Address.city,
-    phone_number: Faker::Number.number(10),
-    category: category_list.sample
+    phone_number: Faker::PhoneNumber.phone_number,
+    category: category_list.sample.capitalize
   },
   {
     name: Faker::Company.name,
     address: Faker::Address.street_address + ", " + Faker::Address.city,
-    phone_number: Faker::Number.number(10),
-    category: category_list.sample
+    phone_number: Faker::PhoneNumber.phone_number,
+    category: category_list.sample.capitalize
   },
   {
     name: Faker::Company.name,
     address: Faker::Address.street_address + ", " + Faker::Address.city,
-    phone_number: Faker::Number.number(10),
-    category: category_list.sample
+    phone_number: Faker::PhoneNumber.phone_number,
+    category: category_list.sample.capitalize
   },
   {
     name: Faker::Company.name,
     address: Faker::Address.street_address + ", " + Faker::Address.city,
-    phone_number: Faker::Number.number(10),
-    category: category_list.sample
+    phone_number: Faker::PhoneNumber.phone_number,
+    category: category_list.sample.capitalize
   },
   {
     name: Faker::Company.name,
     address: Faker::Address.street_address + ", " + Faker::Address.city,
-    phone_number: Faker::Number.number(10),
-    category: category_list.sample
+    phone_number: Faker::PhoneNumber.phone_number,
+    category: category_list.sample.capitalize
   }
 ]
 Restaurant.create!(restaurants)
