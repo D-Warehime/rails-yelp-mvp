@@ -3,6 +3,15 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
+    @restaurants.each do |rest|
+      @reviews = Review.where(restaurant_id: rest.id)
+      sum = 0.0
+      total = @reviews.count
+      @reviews.each do |review|
+        sum += review.rating
+      end
+      @average = sum / total
+    end
   end
 
   def new
@@ -12,10 +21,17 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.save
-    redirect_to restaurants_path
+    redirect_to restaurant_path(@restaurant)
   end
 
   def show
+    @reviews = Review.where(restaurant_id: @restaurant.id)
+    sum = 0.0
+    total = @reviews.count
+    @reviews.each do |review|
+      sum += review.rating
+    end
+    @average = sum / total
   end
 
   def edit
