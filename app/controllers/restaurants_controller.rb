@@ -1,8 +1,9 @@
 class RestaurantsController < ApplicationController
-  before_action :set_rest, only: [:show, :edit, :update, :destroy]
+  before_action :set_rest, only: [:show, :edit, :update, :destroy, :reviews]
 
   def index
     @restaurants = Restaurant.all
+
     @restaurants.each do |rest|
       @reviews = Review.where(restaurant_id: rest.id)
       sum = 0.0
@@ -10,7 +11,7 @@ class RestaurantsController < ApplicationController
       @reviews.each do |review|
         sum += review.rating
       end
-      @average = sum / total
+      rest.average = (sum / total).round(2)
     end
   end
 
@@ -20,8 +21,11 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.save
-    redirect_to restaurant_path(@restaurant)
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :new
+    end
   end
 
   def show
@@ -31,10 +35,13 @@ class RestaurantsController < ApplicationController
     @reviews.each do |review|
       sum += review.rating
     end
-    @average = sum / total
+    @average = (sum / total).round(2)
   end
 
   def edit
+  end
+
+  def reviews
   end
 
   def update

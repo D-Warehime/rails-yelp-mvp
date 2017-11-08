@@ -5,7 +5,7 @@
 <p><%= "Phone Number: #{@restaurant.phone_number}" %></p>
 <p>Rating: <%= @average %></p>
 
-<%= link_to "Add Review", restaurant_reviews_path(@restaurant) %>
+<%= link_to "Add Review", new_restaurant_review_path(@restaurant) %>
 
 <p>Leave a Review (link or form)</p>
 

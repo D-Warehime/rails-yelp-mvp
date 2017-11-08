@@ -1,16 +1,16 @@
 <div class="text-center">
 <h1>Restaurants</h1>
-<%= link_to "Add Restaurant", "restaurants/new", :class => "btn btn-primary" %>
+<%= link_to "Add Restaurant", new_restaurant_path, :class => "btn btn-primary" %>
 <br>
 <% @restaurants.each do |restaurant| %>
 <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h1>
-<%= link_to "Update Restaurant Information", edit_restaurant_path(restaurant), :class => "btn btn-success" %>
+
 <br>
 <%= link_to "Delete Restaurant", "restaurants/#{restaurant.id}",
     method: :delete,
     data: { confirm: "Are you sure you want to Delete this Restaurant" },
     :class => "btn btn-danger" %>
-  <p>Rating: <%= @average %></p>
+  <p>Rating: <%= restaurant.average %></p>
   <br>
 <% end %>
 </div>
